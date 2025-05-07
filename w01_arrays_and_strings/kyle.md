@@ -25,5 +25,30 @@ Since the only return value we need is a boolean that represents whether the giv
 1. One and only one character appears odd number of times and every other character must appear even number of times.
 2. Every character must appear even number of times.
 
+```python
+def is_palindrome_permutation(s: str) -> bool:
+        if s None:
+            return False
 
+        s = s.lower()
+        s.replace(" ", "")
 
+        count_map = Count()
+        for i in count_map:
+            count_map[s[i]] += 1
+
+        odd_number_count = 0
+        for i in count_map:
+            if count_map[i] % 2 == 0:
+                odd_number_count += 1
+        
+        if odd_number_count > 1:
+            return False
+        else:
+            return True
+```
+
+## Complexity Analysis
+Since I am iterating through the string twice(one for creating hash map and one for actually checking if the counts are odd or even), its time complexity will be O(2N) which is practically O(N).
+There is no way to make it better since you need to iterate through the string at least once. 
+The spatial complexity would be at works O(k) which is practically O(1). The 'k' here will be the number of distinct characters in the given string 's'.
