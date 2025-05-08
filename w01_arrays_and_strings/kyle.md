@@ -2,14 +2,18 @@
 # 1.4 Palindrome Permutation
 Disclaimer: Following document did not use chatGPT or any LLM and solely created by initial draft. Therefore, there could be typos or grammatical errors here and there.
 
-
+  
+  
 ## The Question
 Given a string, write a function to check if it is a permutation of a palindrome.
 A palindrome is a word or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words.
 
-EXAMPLE:
-Input: Tact Coa
-Output: True (permutations: "taco cat", "atco cta", etc.)
+EXAMPLE:  
+
+Input: Tact Coa  
+
+Output: True (permutations: "taco cat", "atco cta", etc.)  
+
 
 
 
@@ -19,6 +23,7 @@ Output: True (permutations: "taco cat", "atco cta", etc.)
 - Does just one empty space (" ") or null count as a palindrome?
 
 I will assume that a blank is not considered as a character that forms a palindrome through example cases. I will assume special characters or any number will contribute to the palindrome but not a null value.
+  
 
 ## Initial Approach
 Since the only return value we need is a boolean that represents whether the given string is a permutation of a palindrome and not the entirety of different palindrome permutation cases, I set up rules that make up a palindrome.
@@ -47,6 +52,7 @@ def is_palindrome_permutation(s: str) -> bool:
         else:
             return True
 ```
+  
 
 ## Complexity Analysis
 Since I am iterating through the string twice(one for creating hash map and one for actually checking if the counts are odd or even), its time complexity will be O(2N) which is practically O(N).
