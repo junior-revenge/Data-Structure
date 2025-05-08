@@ -3,7 +3,7 @@
 Disclaimer: Following document did not use chatGPT or any LLM and solely created by initial draft. Therefore, there could be typos or grammatical errors here and there.
 
   
-  
+
 ## The Question
 Given a string, write a function to check if it is a permutation of a palindrome.
 A palindrome is a word or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words.
@@ -38,9 +38,10 @@ def is_palindrome_permutation(s: str) -> bool:
         s = s.lower()
         s.replace(" ", "")
 
-        count_map = Count()
-        for i in count_map:
-            count_map[s[i]] += 1
+        count_map = Counter()
+        for ch in s:
+            count_map[ch] += 1
+            
 
         odd_number_count = 0
         for i in count_map:
