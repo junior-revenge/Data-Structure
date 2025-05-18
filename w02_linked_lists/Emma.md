@@ -31,7 +31,7 @@ However, if the list is too long, we may want to detect linked lists where the f
 2. If we know the size of the linked list, we can iterate through the first half of the elements in a standard for loop, pushing each elements onto a stack.   
 2-1. however, if size of list is odd, we must skip the middle node before comparing the second half.
 
-3. If we don't know the size of the list, we will be using the fast runner/slow runner technique described in the beginning of the chapter. At each step in the loop, we push the data from the slow runner onto a stack. When the fast runner hits the end of the list, the slow runner will have reached the middle of the linked list. By this point the stack will have all the elements from the front of the linked list, but in reverse order.
+3. If we don't know the size of the list, we will be using the fast runner/slow runner technique. At each step in the loop, we push the data from the slow runner onto a stack. When the fast runner hits the end of the list, the slow runner will have reached the middle of the linked list. By this point the stack will have all the elements from the front of the linked list, but in reverse order.
 
 ### Implement
 ```
