@@ -15,7 +15,7 @@ A number of linked list problems rely on recursion. However, recursive algorithm
 
 ## Question.
 >Implement a function to check if a linked list is a palindrome.  
-*The list must be the same backwards and forwards.*
+*(The list must be the same backwards and forwards.)*
 ---
 
 ## Question before going into a solution.
@@ -87,3 +87,5 @@ def isPalindrome(head: LinkedListNode ) -> bool:
 
     return True
 ```
+# complexity
+O(n)
