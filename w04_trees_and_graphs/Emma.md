@@ -38,17 +38,24 @@ void createLevelLinkedList(TreeNode root, ArrayList<LinkedList<TreeNode>> lists,
 1. Detph-first search
 2. breadth-first search
 
-
 ## Review.
-I understand the concept of trees and graphs, but applying them to actual problem is difficulㅅ. 
+I understand the concept of trees and graphs, but applying them to actual problem is difficult.What I found especially challenging was implementing depth-first search using recursion. Starting from the root, the recursive calls allowed me to go deeper into the left subtree first. When I reached a leaf node with no more children to visit, the function returned and moved back up one level. Since this is done through recursion, the previous function calls were still on the call stack, allowing the algorithm to backtrack and visit the right sibling nodes. In this way, depth-first search was accomplished.
 
-## Tree
+## Compelxity  Analysis
+Time Compelxity  : O(N)  
+Space Compelxity : Although the recursive approach uses additional space due to the call stack — specifically O(log N) space in the case of a balanced tree — the algorithm still needs to return O(N) data.
+Since the returned result contains all the nodes in the tree, it naturally takes up O(N) space.
+In terms of Big O notation, we focus only on the dominant term, so the overall space complexity is considered O(N).
+
+
+## Summary
+### Tree
 A tree is a data structure composed of nodes.
 - Each tree has a root node -> Actually a root node isn't necessary in graph theory, but it's usually how we use trees in programming.
 - Root node has zero or more child nodes. Each child node has zero or more child nodes, and so on
 - The tree cannot contain cytcles. The nodes may or may not be in a particular order, they could ahve any data type as values, and they may or may not have links back to their parent nodes.
 
-## Graphs
+### Graphs
 A tree is actually a type of graph, but not all graphs are trees. Simply put, a tree is a connected graphs without cycles.  
 **A graph is simply a collection of nodes with edges between (some of) them**  
 - graphs can be either directed (like the following graph) or undirected. While directed edges are like a one-way street, undirected edges are like a two-way street.
