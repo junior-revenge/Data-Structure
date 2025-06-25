@@ -11,9 +11,9 @@ There is an 8x8 chessboard in which two diagonally opposite corners have been cu
 
 X⬜⬛⬜⬛⬜⬛⬜  
 ⬜⬛⬜⬛⬜⬛⬜⬛  
-⬛⬜⬛⬜⬛⬜⬛⬜
+⬛⬜⬛⬜⬛⬜⬛⬜  
 ⬜⬛⬜⬛⬜⬛⬜⬛  
-⬛⬜⬛⬜⬛⬜⬛⬜
+⬛⬜⬛⬜⬛⬜⬛⬜  
 ⬜⬛⬜⬛⬜⬛⬜⬛  
-⬛⬜⬛⬜⬛⬜⬛⬜
+⬛⬜⬛⬜⬛⬜⬛⬜  
 ⬜⬛⬜⬛⬜⬛⬜X
