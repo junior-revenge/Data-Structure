@@ -9,5 +9,3 @@ Fill the 5 quart jug completely and pour it into the 3 quart jug, then, just 2 q
 After that, empty the 3 quart jug and pour the remaining 2 quart water from the 5 quart jug into the empty 3 quart jug. 
 Then again fill the water fully into the 5 quart jug, and again pour it into the 3quart jug which already has 2 quart water. Since it just need 1 quart to be full, 5 quart jug now has 4 quarts left
 
-
-149,379,400
