@@ -4,7 +4,7 @@ Imagine you have a call center with three levels of employees: respondent, manag
 
 ## Approach
 
-The problem requires 3 different call handler and they must have vertical heirachical structure, respondent -> manager -> director. I suggest to use handler pool and handler interface for this problem.
+The problem requires three different types of call handlers organized in a vertical hierarchy: respondent → manager → director. To address this, I suggest using a handler pool along with a common handler interface.
 
 ## Handler Classes & Interface
 
@@ -15,7 +15,7 @@ interface ICallHandler {
 }
 ```
 
-Every handler class must inherit and implement ICallHandler interface to generalize handler type.
+Every handler class must implement the ICallHandler interface to standardize the handler type. This interface defines two methods: handleCall(), which handles a call and returns the result, and isAvailable(), which indicates whether the handler is currently available.
 
 ```java
 class CallHandleResult {
@@ -37,7 +37,7 @@ class CallHandleResult {
 } // err, result returnning structure
 ```
 
-Every call handler return the result class wheather it failed or not.
+Every call handler return the CallHandleResult class as a result.
 
 ## Handler Classes
 
@@ -79,6 +79,8 @@ class Director implements ICallHandler {
 }
 ```
 
+Each call handler class maintains a status indicating whether it is currently handling a call. If a handler is busy, the isAvailable() method returns false.
+
 ## Call Handler Pool
 
 ```java
@@ -113,6 +115,8 @@ class CallHandlerPool  {
     }
 }
 ```
+
+The class above represents a call handler pool, which manages a specific group of call handlers. It maintains a collection of handlers and returns an available handler instance when requested. Additionally, it holds a reference to the next-level handler pool for escalation.
 
 ## Call Center Class
 
@@ -155,3 +159,5 @@ class CallCenter {
     }
 }
 ```
+
+The class above handles incoming call requests and dispatches them to the appropriate handler. It maintains three different call handler pools—responder, manager, and director—arranged in a hierarchical order. When a call is dispatched, the class first attempts to assign it to the responder pool. If no responder is available or fail to handle a call, it escalates the call to the next pool in the chain, continuing until it either finds an available handler or reaches the final pool.
