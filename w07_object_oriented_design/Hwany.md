@@ -94,5 +94,6 @@ public class UserFunction {
 public class AdminFunction {
     public void addBook(Book book) { }
 }
+
 ```
 
