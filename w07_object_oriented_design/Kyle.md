@@ -1,6 +1,6 @@
 
 ... What is BlackJack?
-
+... Java or Python?
 
 ```python
 from __future__ import annotations
@@ -37,7 +37,7 @@ class Rank(Enum):
     KING  = 13
 
     @property
-    def short(self) -> str:          # “A”, “K”, “Q”, … “10”
+    def short(self) -> str:
         return {
             Rank.ACE: "A",
             Rank.JACK: "J",
@@ -94,11 +94,6 @@ class Deck(Generic[T]):
     def _full_standard_deck() -> List[Card]:
         return [Card(suit, rank) for suit in Suit for rank in Rank]
 
-    # For convenient printing in REPLs
-    def __repr__(self) -> str:
-        return f"Deck({self.remaining()} cards remaining)"
-
-
 # ────────────────────────── Hand ───────────────────────────── #
 class Hand(Generic[T]):
     """A player’s personal pile of cards."""
@@ -116,23 +111,57 @@ class Hand(Generic[T]):
         self._cards.clear()
 
     def cards(self) -> List[T]:
-        return self._cards.copy()           # expose a safe copy
+        return self._cards.copy()
 
     def __str__(self) -> str:
         return " ".join(map(str, self._cards)) or "∅ (empty hand)"
 
 
-# ────────────────────────── Demo ───────────────────────────── #
-if __name__ == "__main__":
-    deck  = Deck()             # standard 52-card deck, already shuffled
-    hand1 = Hand[Card]()
-    hand2 = Hand[Card]()
+# ────────────────── Blackjack-specific Card ────────────────── #
+class BlackjackCard(Card):
+    """A playing card with Blackjack point values."""
 
-    hand1.extend(deck.deal(2))
-    hand2.extend(deck.deal(2))
+    def is_ace(self) -> bool:
+        return self.rank is Rank.ACE
 
-    print(f"Player 1: {hand1}")
-    print(f"Player 2: {hand2}")
-    print(f"Cards left in deck: {deck.remaining()}")
+    # --- override ------------------------------------------------------ #
+    def numeric_value(self) -> int:
+        """Return the *hard* value (Ace = 1)."""
+        if self.rank in (Rank.JACK, Rank.QUEEN, Rank.KING):
+            return 10
+        return 1 if self.is_ace() else self.rank.value
+
+    # keep Card.__str__ → shows “A♠”, “10♥”, etc.
+
+
+# ────────────────── Blackjack-specific Hand ────────────────── #
+class BlackjackHand(Hand[BlackjackCard]):
+    """Adds scoring logic and convenience helpers."""
+
+    def score(self) -> int:
+        """
+        Compute the best score: highest value ≤ 21,
+        or the minimal bust score if all totals bust.
+        """
+        base = 0
+        aces = 0
+        for card in self._cards:
+            base += card.numeric_value()   # Ace counts as 1 for now
+            if card.is_ace():
+                aces += 1
+
+        # Upgrade some aces from 1 → 11 (adds +10) as long as we stay ≤ 21
+        best = base
+        while aces and best + 10 <= 21:
+            best += 10
+            aces -= 1
+        return best
+
+    def is_blackjack(self) -> bool:
+        """Exactly two cards totaling 21."""
+        return len(self._cards) == 2 and self.score() == 21
+
+    def is_busted(self) -> bool:
+        return self.score() > 21
 
 ```
