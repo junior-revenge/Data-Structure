@@ -6,9 +6,6 @@ Write a recursive function to multiply two positive integers without using the o
 
 ## Brute Force
 make recursive function to call multiple times
-재귀함수를 곱하는것마냥 더하기로 리컬시브 만들면?
-그럼 우선 더할 인자를 매개변수로 받아(n으로) 그걸 곱해지는 수만큼 호출하면? 즉 2*4는 2를 4번 더한것과 같으니까 두 수를 매개변수로 받고 뒤에 times로 받은 매개변수만큼 호출하는 함수를 만들면?
-근데 그걸 t번어떻게 호출하지? 어떻게 그게 t번째라는걸 인식하게 하지?
 ```
 def recursive(n,t):
     for i in range(t):
