@@ -1,5 +1,6 @@
 
-# 9.4 Duplicate URLs: You have 10 billion URLs. How do you detect the duplicate documents? In this case, assume "duplicate" means that the URLs are identical.
+# 9.4 Duplicate URLs: You have 10 billion URLs. 
+How do you detect the duplicate documents? In this case, assume "duplicate" means that the URLs are identical.
 
 ## Problem
 You have 1 billion URLs, and you want to deduplicate them efficiently.
