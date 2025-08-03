@@ -19,6 +19,7 @@ Depth-first search explores one path as far as it can go, and if it reaches a de
 
 ## code
 ```
+
 class Person{
     private int id;
     private ArrayList<Integer> friends;
@@ -46,7 +47,7 @@ class PathNode{
     }
     public LinkedList<Person> collapse(boolean startsWithRoot){
         LinkedList<Person> path = new LinkedList<>();
-        PathNode node = this; // collapse를 호출한 instance
+        PathNode node = this; // the instance that called collapse
         while(node != null){
             if(startsWithRoot){
                 path.addLast(node.person);
@@ -59,13 +60,13 @@ class PathNode{
     }
 }
 class BFSData{
-    public Queue<PathNode> toVisit = new LinkedList<PathNode>(); // queue의 구현체인 linkedlist
+    public Queue<PathNode> toVisit = new LinkedList<PathNode>(); // a LinkedList implementation of a Queue
     public HashMap<Integer, PathNode> visited = new HashMap<>();
 
     public BFSData(Person root){
-        PathNode sourcePath = new PathNode(root, null); // source가 시작이니까 privous는 null
-        toVisit.add(sourcePath); //가장먼저 방문할 노드니까 queue에 추가
-        visited.put(root.getId(), sourcePath); // 바로 방문할 노드라서 중복방문 방지하려고 visited에도 추가
+        PathNode sourcePath = new PathNode(root, null); // Since the source is the starting point, its previous is null.
+        toVisit.add(sourcePath); //"As the initial node to be visited, it is added to the queue
+        visited.put(root.getId(), sourcePath); // Since it will be visited immediately, we also add it to visited to prevent revisiting
     }
 
     public boolean isFinished(){
@@ -73,7 +74,7 @@ class BFSData{
     }
 }
 
- LinkedList<Person> findPathBiBFS(HashMap<Integer, Person> people, int source, int destination){
+     LinkedList<Person> findPathBiBFS(HashMap<Integer, Person> people, int source, int destination){
         BFSData sourceData = new BFSData(people.get(source));
         BFSData destData = new BFSData(people.get(destination));
         while(!sourceData.isFinished() && !destData.isFinished()){
@@ -109,7 +110,7 @@ class BFSData{
                 }
             }
         }
-        return null; // 위에서 return을 하지못하면 friend 을 찾지못한것
+        return null; //If we don't return above, it means the friend was not found
     }
     LinkedList<Person> mergePaths(BFSData bfs1, BFSData bfs2, int connection){
         PathNode end1 = bfs1.visited.get(connection);
