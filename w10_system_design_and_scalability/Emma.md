@@ -1,5 +1,5 @@
 # Problem 9.2 Social Network
-How wo Face-book or LinkedIn? uld you design the data structures for a very large social network likeDescribe how you would design an algorithm to show the shortest path between two people.(e.g., Me -> Bob -> Susan -> Jason -> You)
+How we Face-book or LinkedIn? would you design the data structures for a very large social network likeDescribe how you would design an algorithm to show the shortest path between two people.(e.g., Me -> Bob -> Susan -> Jason -> You)
 Hint. 270, 285, 304, 321
 
 ## Brute Force
