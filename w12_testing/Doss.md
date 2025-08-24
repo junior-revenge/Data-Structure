@@ -42,10 +42,54 @@ class Knight implements Piece {
 
 ## Test
 
-I'm goint to test using JUnit.
+Let's think about test cases - what cases should we consider? First, we should have boundary value testing, and we can think about valid moves, invalid moves, etc. Also, in chess, each piece has different characteristics. For example, pawns cannot move backwards, knights can move without being obstructed by other pieces, and so on.
+
+So I propose dividing the testing into the following cases:
 
 ```java
-class ChessTest {
+class PieceTest {
+    private ChessBoard board;
+
+    @BeforeEach
+    void setUp() {
+        board = new ChessBoard();
+    }
+
+    @Test
+    void testOutOfBound() {
+        Piece pawn = new Pawn(1, 1);
+
+        assertFalse(pawn.canMoveTo(-1, 0));
+        assertFalse(pawn.canMoveTo(0, -1));
+    }
+
+    @Test
+    void testValidMove() {
+        Piece pawn = new Pawn(1, 1);
+
+        assertTrue(pawn.canMoveTo(1, 2));
     
+        board.setPiece(2, 2, new Pawn(2, 2));
+        assertTrue(pawn.canMoveTo(2, 2));
+    }
+
+    @Test
+    void testInvalidMove() {
+        Piece pawn = new Pawn(1, 1);
+
+        assertFalse(pawn.canMove(1, 0));
+        assertFalse(pawn.canMove(0, 1));
+    }
+
+    @Test
+    void testPathBlocked() {
+        Piece pawn = new Pawn(1, 1);
+
+        board.setPiece(new Pawn(1, 2));
+        assertFalse(pawn.canMove(1, 2));
+
+        Piece knight = new Knight(1, 0);
+        assertTrue(knight.canMove(2, 2));
+    }
 }
 ```
