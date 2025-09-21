@@ -2,15 +2,15 @@
 
 ## Process
 
-(memory_map)[memory_map.jpg]
+![memory_map](memory_map.jpg)
 
-(pcb)[pcb.jpg]
+![pcb](pcb.jpg)
 
 ## Thread
 
-(memory_map_thread)[memory_map_thread.png]
+![memory_map_thread](memory_map_thread.png)
 
-(tcb)[tcb.webp]
+![tcb](tcb.webp)
 
 ## Process VS Thread
 
